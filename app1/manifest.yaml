@@ -12,7 +12,7 @@ spec:
   selector:
   # these are used to select pods
     matchLabels:
-      purpose: dp-demo
+      purpose: ingress-demo
       project: roboshop
       app: app1
   # pod definition
