@@ -26,6 +26,8 @@ spec:
       containers:
       - name: app1
         image: suryamalli/app1:v1
+        ports:
+          - containerPort: 80
 ---
 apiVersion: v1 
 kind: Service 
@@ -48,6 +50,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:194796552797:certificate/97ec367f-ff77-4a22-98dc-082ee25212df
+    # arn:aws:acm:us-east-1:194796552797:certificate/97ec367f-ff77-4a22-98dc-082ee25212df
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/tags: Environment=dev,Project=roboshop
     alb.ingress.kubernetes.io/target-type: ip
@@ -64,13 +67,3 @@ spec:
             name: app1
             port:
               number: 80
-  # - host: "*.foo.com"
-  #   http:
-  #     paths:
-  #     - pathType: Prefix
-  #       path: "/foo"
-  #       backend:
-  #         service:
-  #           name: service2
-  #           port:
-  #             number: 80
